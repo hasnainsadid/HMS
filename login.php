@@ -27,7 +27,7 @@
       <div class="container text-center wow zoomIn">
         <span class="subhead">Don't have an account?</span>
         <h1 class="display-4">Registration for Appointment</h1>
-        <a href="#" class="btn btn-primary">Registration</a>
+        <a href="./patient/registration.php" class="btn btn-primary">Registration</a>
       </div>
     </div>
   </div>

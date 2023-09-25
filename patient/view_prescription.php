@@ -15,7 +15,7 @@ $result = $db->query("SELECT * FROM doctors")
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="./dist/img/fevicon.png" type="image/x-icon">
-  <title>TrueMedicare Haven | View Doctors</title>
+  <title>TrueMedicare Haven | View Prescription</title>
   <?php include("./includes/view_style_link.php") ?>
 </head>
 
@@ -35,12 +35,12 @@ $result = $db->query("SELECT * FROM doctors")
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>View Doctors</h1>
+              <h1>View Prescription</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="home.php">Dashboard</a></li>
-                <li class="breadcrumb-item active">View Doctors</li>
+                <li class="breadcrumb-item active">View Prescription</li>
               </ol>
             </div>
           </div>

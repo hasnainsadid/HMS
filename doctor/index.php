@@ -8,7 +8,7 @@ if (isset($_REQUEST['submit'])) :
   session_start();
   if ($result->num_rows) {
     $_SESSION['id'] = $row->id;
-    $_SESSION['img'] = $row->image;
+    $_SESSION['img'] = $row->img;
     $_SESSION['name'] = $row->name;
     $_SESSION['email'] = $row->email;
     $_SESSION['designation'] = $row->designation;
