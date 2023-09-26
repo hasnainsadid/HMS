@@ -1,25 +1,26 @@
 <?php
-if (isset($_REQUEST['submit'])) :
-  extract($_REQUEST);
-  $pass = sha1($password);
-  include_once("./includes/config.php");
-  $result = $db->query("SELECT * FROM doctors WHERE email='$email' AND password='$pass'");
-  $row = $result->fetch_object();
-  session_start();
-  if ($result->num_rows) {
-    $_SESSION['id'] = $row->id;
-    $_SESSION['img'] = $row->img;
-    $_SESSION['name'] = $row->name;
-    $_SESSION['email'] = $row->email;
-    $_SESSION['designation'] = $row->designation;
-    $_SESSION['status'] = $row->status;
-    header("Location: home.php");
-  } else {
-    $_SESSION['msg'] = "Invalid Email or Password";
-    header("Location: index.php");
-  }
-endif;
+session_start();
+
+if (isset($_REQUEST['submit'])) {
+    extract($_REQUEST);
+    $pass = sha1($password);
+    include_once("./includes/config.php");
+    $result = $db->query("SELECT * FROM admin WHERE email='$email' AND password='$pass' AND status='1'");
+    $row = $result->fetch_object();
+    
+    if ($result->num_rows) {
+        $_SESSION['name'] = $row->name;
+        $_SESSION['email'] = $row->email;
+        $_SESSION['img'] = $row->img;
+        $_SESSION['status'] = $row->status;
+        header("Location: home.php");
+    } else {
+        $_SESSION['msg'] = "Invalid Email or Password";
+        header("Location: index.php");
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,12 +30,12 @@ endif;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrueMedicare Haven | Login</title>
   <link rel="shortcut icon" href="./dist/img/fevicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="../assets/css/maicons.css">
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/maicons.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.css">
+  <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="./assets/css/theme.css">
+  <link rel="stylesheet" href="./doctor/plugins/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
@@ -42,7 +43,7 @@ endif;
     <div class="container">
       <div class="row d-flex align-items-center justify-content-center">
         <div class="col-2">
-          <a href="../index.php" class="navbar-icon"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+          <a href="index.php" class="navbar-icon"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         </div>
         <div class="col-10">
           <a class="navbar-brand" href="index.php"><span class="text-primary">TrueMedicare Haven</a>
@@ -50,12 +51,11 @@ endif;
       </div>
     </div>
   </nav>
-  <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg); background-position: bottom; height: 88.6vh;">
+  <div class="page-hero bg-image overlay-dark" style="background-image: url(./assets/img/bg_image_1.jpg); background-position: bottom; height: 88.6vh;">
     <div class="hero-section">
       <div class="container wow zoomIn">
         <div class="row m-auto">
-          <div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2">
-            <h3 class="text-center mt-5 mb-3" style="background-color: #578B9D; border-radius: 5px">Login As Doctor</h3>
+          <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2">
             <form method="post">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
