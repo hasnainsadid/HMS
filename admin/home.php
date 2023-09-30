@@ -5,6 +5,8 @@ session_start();
   $doctors = $db->query("SELECT * FROM doctors");
   $admin = $db->query("SELECT * FROM admin");
   $department = $db->query("SELECT * FROM department");
+  $income_result = $db->query("SELECT SUM(amount_paid) AS profit FROM income WHERE status='1'");
+  $incomes = $income_result->fetch_object();
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +67,7 @@ session_start();
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
+          
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-md"></i></span>
@@ -78,9 +80,7 @@ session_start();
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
+          
           <div class="clearfix hidden-md-up"></div>
           <!-- Administration -->
           <div class="col-12 col-sm-6 col-md-3">
@@ -95,7 +95,7 @@ session_start();
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
+
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
@@ -108,12 +108,24 @@ session_start();
             </div>
             <!-- /.info-box -->
           </div>
+          
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-dollar-sign"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Income</span>
+                <span class="info-box-number">$<?php echo $incomes->profit; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
           <!-- /.col -->
         </div>
       </div><!-- /.container-fluid -->
     </section>
     
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <?php include("./includes/footer.php")?>

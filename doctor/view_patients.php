@@ -5,8 +5,8 @@ if (!isset($_SESSION)) {
 }
 include_once("./includes/config.php");
 $id = $_SESSION['id'];
-// query for admin
-$result = $db->query("SELECT * FROM patients WHERE d_id = '$id' ")
+
+$result = $db->query("SELECT * FROM patients WHERE d_id = '$id'")
 ?>
 
 <!DOCTYPE html>
