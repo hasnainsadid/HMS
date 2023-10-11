@@ -6,7 +6,7 @@ if (isset($_REQUEST['submit'])) {
   extract($_REQUEST);
   $p_id = $_SESSION['id'];
   $db->query("INSERT INTO `appointment`(`id`, `p_id`, `date`, `reason`, `doc_id`, `status`) VALUES(NULL, '$p_id', '$date', '$reason', '$doctor', '0')");
-  if ($db->affected_rows) {
+  if ($db->affected_rows) { 
     header("Location: view_appointment.php");
   }
 }

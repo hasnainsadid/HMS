@@ -105,6 +105,7 @@
                     <button type="submit" name="submit" class="btn btn-success m-auto d-block w-25">Submit</button> <br>
                     <a class="btn btn-success m-auto d-block w-25" href="./view_patients.php">Go to Patients List</a>
                   </div>
+                </form>
               </div>
             </div>
           </div>

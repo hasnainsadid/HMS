@@ -13,7 +13,6 @@ if (isset($_REQUEST['submit'])) :
     $_SESSION['address'] = $row->address;
     $_SESSION['gender'] = $row->gender;
     $_SESSION['blood_grp'] = $row->blood_grp;
-    $_SESSION['status'] = $row->status;
     header("Location: home.php");
   } else {
     $_SESSION['msg'] = "Invalid Email or Password";
@@ -67,6 +66,8 @@ endif;
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
               </div>
               <button type="submit" name="submit" class="btn btn-primary m-auto d-block w-50">Submit</button>
+              <p class="text-center my-5 d-block" >Not an Account??? <a href="./registration.php">Registration</a> </p>
+              <!-- <a href="./registration.php">Registration</a> -->
             </form>
           </div>
         </div>

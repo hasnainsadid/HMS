@@ -5,6 +5,8 @@ session_start();
   $doctors = $db->query("SELECT * FROM doctors");
   $admin = $db->query("SELECT * FROM admin");
   $department = $db->query("SELECT * FROM department");
+  $seat = $db->query("SELECT * FROM seat");
+  $available = $db->query("SELECT * FROM seat WHERE status = '0'");
   $income_result = $db->query("SELECT SUM(amount_paid) AS profit FROM income WHERE status='1'");
   $incomes = $income_result->fetch_object();
 ?>
@@ -108,6 +110,19 @@ session_start();
             </div>
             <!-- /.info-box -->
           </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-bed"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Available Seat</span>
+                <span class="info-box-number"><?php echo $available->num_rows; ?> out of <?php  echo $seat->num_rows; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
           
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
@@ -121,6 +136,7 @@ session_start();
             </div>
             <!-- /.info-box -->
           </div>
+
           <!-- /.col -->
         </div>
       </div><!-- /.container-fluid -->

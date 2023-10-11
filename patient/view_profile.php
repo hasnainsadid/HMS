@@ -71,9 +71,6 @@
                       <label for="exampleInputPassword1">Blood Group</label>
                       <input type="text" name="blood" class="form-control form-control-border" id="exampleInputPassword1" value="<?php echo $_SESSION['blood_grp']?>" readonly>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Status</label>
-                      <input type="text" name="status" class="form-control form-control-border" id="exampleInputPassword1" value="<?php echo $_SESSION['status'] == 1 ? 'Active' : 'Inactive'?>" readonly>
                     </div>
                 </form>
               </div>
